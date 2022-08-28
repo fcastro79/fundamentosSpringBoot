@@ -56,7 +56,7 @@ public class FundamentosApplication implements CommandLineRunner {
 	}
 
 	private void getInformalJPQLFromUser(){
-		LOGGER.info("Usuario obtenido con el metodo findByUserEmail" +
+/*		LOGGER.info("Usuario obtenido con el metodo findByUserEmail" +
 				userRepository.findMyUserByEmail("john@domain.com")
 						.orElseThrow(()-> new RuntimeException("no se encontro el usuario")));
 
@@ -68,6 +68,15 @@ public class FundamentosApplication implements CommandLineRunner {
 
 		LOGGER.info("findByEmailAndName"+userRepository.findByEmailAndName("oscar@domain.com","Oscar")
 				.orElseThrow(()->new RuntimeException("usuario no encontrado")));
+
+		userRepository.findByNameLike("%o%").forEach(user -> LOGGER.info("findByNameLike"+ user));
+		userRepository.findByNameOrEmail("John",null).forEach(user -> LOGGER.info("findByNameOrEmail"+ user));
+		userRepository.findByBirthdayBetween(LocalDate.of(2019, 01, 01),
+						LocalDate.of(2019, 06, 01))
+				.forEach(user -> LOGGER.info("findByBirthDateBetween"+ user));
+		userRepository.findByNameLikeOrderByIdDesc("%a%").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));
+		userRepository.findByNameLikeOrderByIdAsc("%a%").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));*/
+		userRepository.findByNameContainingOrderByIdAsc("a").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));
 	}
 
 
