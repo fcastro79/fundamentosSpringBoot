@@ -71,12 +71,14 @@ public class FundamentosApplication implements CommandLineRunner {
 
 		userRepository.findByNameLike("%o%").forEach(user -> LOGGER.info("findByNameLike"+ user));
 		userRepository.findByNameOrEmail("John",null).forEach(user -> LOGGER.info("findByNameOrEmail"+ user));
-		userRepository.findByBirthdayBetween(LocalDate.of(2019, 01, 01),
+		userRepository.findByBirthDateBetween(LocalDate.of(2019, 01, 01),
 						LocalDate.of(2019, 06, 01))
 				.forEach(user -> LOGGER.info("findByBirthDateBetween"+ user));
 		userRepository.findByNameLikeOrderByIdDesc("%a%").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));
-		userRepository.findByNameLikeOrderByIdAsc("%a%").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));*/
+		userRepository.findByNameLikeOrderByIdAsc("%a%").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));
 		userRepository.findByNameContainingOrderByIdAsc("a").forEach(user -> LOGGER.info("findByNameLikeOrderByIdDesc"+ user));
+		userRepository.getAllByBirthDateAndEmail(LocalDate.of(2021, 03, 25),"daniela@domain.com")
+				.orElseThrow(()->new RuntimeException("usuario no encontrado"));*/
 	}
 
 
